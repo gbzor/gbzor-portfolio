@@ -16,7 +16,14 @@ const DELETING_SPEED = 40;
 const PAUSE_AFTER_TYPING = 2000;
 const PAUSE_AFTER_DELETING = 500;
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 function typewrite() {
+  if (prefersReducedMotion.matches) {
+    typewriterEl.textContent = roles[roleIndex];
+    return;
+  }
+
   const currentRole = roles[roleIndex];
 
   if (!isDeleting) {
@@ -49,43 +56,79 @@ typewrite();
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
-const savedTheme = localStorage.getItem('theme') || 'dark';
-html.setAttribute('data-theme', savedTheme);
+function getDefaultTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
 
-themeToggle.addEventListener('click', () => {
+html.setAttribute('data-theme', getDefaultTheme());
+
+function updateMetaThemeColor(theme) {
+  const color = theme === 'dark' ? '#0a0a0f' : '#f8f8fc';
+  document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
+    meta.setAttribute('content', color);
+  });
+}
+
+updateMetaThemeColor(getDefaultTheme());
+
+themeToggle.addEventListener('click', function() {
   const current = html.getAttribute('data-theme');
   const next = current === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
+  updateMetaThemeColor(next);
 });
 
+/* ===== THROTTLE UTILITY ===== */
+function throttle(fn, ms) {
+  let lastCall = 0;
+  let timer = null;
+  return function() {
+    var now = Date.now();
+    var remaining = ms - (now - lastCall);
+    if (remaining <= 0) {
+      if (timer) { clearTimeout(timer); timer = null; }
+      lastCall = now;
+      fn();
+    } else if (!timer) {
+      timer = setTimeout(function() {
+        lastCall = Date.now();
+        timer = null;
+        fn();
+      }, remaining);
+    }
+  };
+}
+
 /* ===== DOCK ACTIVE STATE ===== */
-const dockItems = document.querySelectorAll('.dock-item[href^="#"]');
-const sections = document.querySelectorAll('section[id]');
+var dockItems = document.querySelectorAll('.dock-item[href^="#"]');
+var sections = document.querySelectorAll('section[id]');
 
 function updateActiveDock() {
-  const scrollY = window.scrollY + window.innerHeight / 2;
+  var scrollY = window.scrollY + window.innerHeight / 2;
 
-  sections.forEach((section) => {
-    const top = section.offsetTop;
-    const height = section.offsetHeight;
-    const id = section.getAttribute('id');
+  sections.forEach(function(section) {
+    var top = section.offsetTop;
+    var height = section.offsetHeight;
+    var id = section.getAttribute('id');
 
     if (scrollY >= top && scrollY < top + height) {
-      dockItems.forEach((item) => item.classList.remove('active'));
-      const activeItem = document.querySelector(`.dock-item[href="#${id}"]`);
+      dockItems.forEach(function(item) { item.classList.remove('active'); });
+      var activeItem = document.querySelector('.dock-item[href="#' + id + '"]');
       if (activeItem) activeItem.classList.add('active');
     }
   });
 }
 
-window.addEventListener('scroll', updateActiveDock, { passive: true });
+window.addEventListener('scroll', throttle(updateActiveDock, 100), { passive: true });
 
 /* ===== SMOOTH SCROLL FOR DOCK LINKS ===== */
-dockItems.forEach((item) => {
-  item.addEventListener('click', (e) => {
+dockItems.forEach(function(item) {
+  item.addEventListener('click', function(e) {
     e.preventDefault();
-    const target = document.querySelector(item.getAttribute('href'));
+    var target = document.querySelector(item.getAttribute('href'));
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -93,81 +136,96 @@ dockItems.forEach((item) => {
 });
 
 /* ===== SCROLL TO TOP BUTTON ===== */
-const scrollTopBtn = document.getElementById('scrollTop');
+var scrollTopBtn = document.getElementById('scrollTop');
 
-window.addEventListener('scroll', () => {
+var handleScrollVisibility = throttle(function() {
   if (window.scrollY > 500) {
     scrollTopBtn.classList.add('visible');
   } else {
     scrollTopBtn.classList.remove('visible');
   }
-}, { passive: true });
+}, 100);
 
-scrollTopBtn.addEventListener('click', () => {
+window.addEventListener('scroll', handleScrollVisibility, { passive: true });
+
+scrollTopBtn.addEventListener('click', function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* ===== SECTION REVEAL ON SCROLL ===== */
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+var observerOptions = {
+  threshold: 0.05,
+  rootMargin: '0px 0px -30px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
-document.querySelectorAll('.section').forEach((section) => {
+document.querySelectorAll('.section').forEach(function(section) {
   observer.observe(section);
 });
 
 /* ===== CONTACT FORM (placeholder handler) ===== */
-const contactForm = document.getElementById('contactForm');
+var contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
   // EDIT: Replace this with your actual form submission logic
   // Options: Formspree, EmailJS, Netlify Forms, custom backend, etc.
-  const formData = new FormData(contactForm);
-  const data = Object.fromEntries(formData);
+  var formData = new FormData(contactForm);
+  var data = Object.fromEntries(formData);
   console.log('Form submitted:', data);
 
   alert('Thanks for your message! (Connect a form service to make this work)');
   contactForm.reset();
 });
 
-/* ===== DOCK MAGNIFICATION EFFECT ===== */
-const dockContainer = document.querySelector('.dock-container');
+/* ===== DOCK MAGNIFICATION EFFECT (pointer devices only) ===== */
+var dockContainer = document.querySelector('.dock-container');
+var isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-dockContainer.addEventListener('mousemove', (e) => {
-  const items = dockContainer.querySelectorAll('.dock-item');
-  const rect = dockContainer.getBoundingClientRect();
-  const mouseX = e.clientX - rect.left;
+if (!isTouchDevice) {
+  dockContainer.addEventListener('mousemove', function(e) {
+    var items = dockContainer.querySelectorAll('.dock-item');
+    var rect = dockContainer.getBoundingClientRect();
+    var mouseX = e.clientX - rect.left;
 
-  items.forEach((item) => {
-    const itemRect = item.getBoundingClientRect();
-    const itemCenter = itemRect.left + itemRect.width / 2 - rect.left;
-    const distance = Math.abs(mouseX - itemCenter);
-    const maxDistance = 120;
+    items.forEach(function(item) {
+      var itemRect = item.getBoundingClientRect();
+      var itemCenter = itemRect.left + itemRect.width / 2 - rect.left;
+      var distance = Math.abs(mouseX - itemCenter);
+      var maxDistance = 120;
 
-    if (distance < maxDistance) {
-      const scale = 1 + 0.15 * (1 - distance / maxDistance);
-      const lift = -4 * (1 - distance / maxDistance);
-      item.style.transform = `translateY(${lift}px) scale(${scale})`;
-    } else {
+      if (distance < maxDistance) {
+        var scale = 1 + 0.15 * (1 - distance / maxDistance);
+        var lift = -4 * (1 - distance / maxDistance);
+        item.style.transform = 'translateY(' + lift + 'px) scale(' + scale + ')';
+      } else {
+        item.style.transform = '';
+      }
+    });
+  });
+
+  dockContainer.addEventListener('mouseleave', function() {
+    var items = dockContainer.querySelectorAll('.dock-item');
+    items.forEach(function(item) {
       item.style.transform = '';
-    }
+    });
   });
-});
+}
 
-dockContainer.addEventListener('mouseleave', () => {
-  const items = dockContainer.querySelectorAll('.dock-item');
-  items.forEach((item) => {
-    item.style.transform = '';
-  });
-});
+/* ===== HANDLE ORIENTATION CHANGE / RESIZE ===== */
+var resizeTimeout;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(function() {
+    updateActiveDock();
+  }, 250);
+}, { passive: true });

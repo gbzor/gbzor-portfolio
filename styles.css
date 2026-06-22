@@ -16,33 +16,33 @@
   --safe-right: env(safe-area-inset-right, 0px);
 }
 
-/* ---------- DARK THEME: charcoal + warm amber ---------- */
+/* ---------- DARK THEME: warm ink + terracotta & sage ---------- */
 [data-theme="dark"] {
-  --bg-primary: #0c0f14;
-  --bg-secondary: #111419;
-  --bg-tertiary: #181c23;
-  --bg-card: #151920;
-  --bg-card-hover: #1c2029;
-  --bg-dock: rgba(17, 20, 25, 0.88);
-  --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.1);
-  --text-primary: #e8e4de;
-  --text-secondary: #9a958d;
-  --text-muted: #5c584f;
-  --accent: #e8a838;
-  --accent-hover: #f0bd5c;
-  --accent-glow: rgba(232, 168, 56, 0.2);
-  --accent-secondary: #56b89f;
-  --tag-bg: rgba(232, 168, 56, 0.1);
-  --tag-text: #e8a838;
-  --input-bg: #181c23;
-  --placeholder: #4a473f;
-  --glow-1: rgba(232, 168, 56, 0.06);
-  --glow-2: rgba(86, 184, 159, 0.04);
-  --scrollbar-thumb: #2a2d33;
-  --badge-bg: rgba(86, 184, 159, 0.1);
-  --badge-text: #56b89f;
-  --badge-dot: #56b89f;
+  --bg-primary: #110f0d;
+  --bg-secondary: #171412;
+  --bg-tertiary: #1e1a17;
+  --bg-card: #1a1613;
+  --bg-card-hover: #211d19;
+  --bg-dock: rgba(17, 15, 13, 0.88);
+  --border: rgba(255,235,210,0.06);
+  --border-hover: rgba(255,235,210,0.1);
+  --text-primary: #e0dbd4;
+  --text-secondary: #968f84;
+  --text-muted: #5c564d;
+  --accent: #cf8e6d;
+  --accent-hover: #dba485;
+  --accent-glow: rgba(207, 142, 109, 0.18);
+  --accent-secondary: #8aaa96;
+  --tag-bg: rgba(207, 142, 109, 0.1);
+  --tag-text: #cf8e6d;
+  --input-bg: #1e1a17;
+  --placeholder: #4a453d;
+  --glow-1: rgba(207, 142, 109, 0.05);
+  --glow-2: rgba(138, 170, 150, 0.03);
+  --scrollbar-thumb: #2c2721;
+  --badge-bg: rgba(138, 170, 150, 0.1);
+  --badge-text: #8aaa96;
+  --badge-dot: #8aaa96;
 }
 
 /* ---------- LIGHT THEME: warm cream + deep teal ---------- */
@@ -270,7 +270,7 @@ img {
   font-size: 0.82rem;
   font-weight: 500;
   margin-bottom: 32px;
-  border: 1px solid rgba(86, 184, 159, 0.15);
+  border: 1px solid rgba(138, 170, 150, 0.15);
 }
 
 [data-theme="light"] .hero-badge {
@@ -414,7 +414,7 @@ img {
 
 .btn-primary {
   background: var(--accent);
-  color: #0c0f14;
+  color: #110f0d;
 }
 
 [data-theme="light"] .btn-primary {
@@ -424,7 +424,7 @@ img {
 @media (hover: hover) {
   .btn-primary:hover {
     background: var(--accent-hover);
-    color: #0c0f14;
+    color: #110f0d;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px var(--accent-glow);
   }

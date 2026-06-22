@@ -65,7 +65,7 @@ function getDefaultTheme() {
 html.setAttribute('data-theme', getDefaultTheme());
 
 function updateMetaThemeColor(theme) {
-  const color = theme === 'dark' ? '#0c0f14' : '#f5f0e8';
+  const color = theme === 'dark' ? '#110f0d' : '#f5f0e8';
   document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
     meta.setAttribute('content', color);
   });

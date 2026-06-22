@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8f8fc" media="(prefers-color-scheme: light)" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>gbzor | Jason Gabriel M. Azor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== DOCK NAVBAR (macOS-inspired) ===== -->
+  <nav class="dock" id="dock">
+    <div class="dock-container">
+      <a href="#hero" class="dock-item active" data-tooltip="Home">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="dock-label">Home</span>
+      </a>
+      <a href="#about" class="dock-item" data-tooltip="About">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <span class="dock-label">About</span>
+      </a>
+      <a href="#skills" class="dock-item" data-tooltip="Skills">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <span class="dock-label">Skills</span>
+      </a>
+      <a href="#projects" class="dock-item" data-tooltip="Projects">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <span class="dock-label">Projects</span>
+      </a>
+      <a href="#contact" class="dock-item" data-tooltip="Contact">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span class="dock-label">Contact</span>
+      </a>
+      <div class="dock-separator"></div>
+      <a href="https://github.com/gbzor" target="_blank" rel="noopener" class="dock-item" data-tooltip="GitHub">
+        <div class="dock-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+        <span class="dock-label">GitHub</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <div class="hero-greeting">
+        <span class="greeting-line"></span>
+        <span class="greeting-text">Hello, I'm</span>
+        <span class="greeting-line"></span>
+      </div>
+      <h1 class="hero-name">
+        <span class="name-first">Jason Gabriel</span>
+        <span class="name-last">M. Azor</span>
+      </h1>
+      <p class="hero-tagline">
+        <span class="tagline-role" id="typewriter"></span>
+        <span class="typewriter-cursor">|</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+
+      <!-- EDIT: Add your photo here -->
+      <!-- <img src="your-photo.jpg" alt="Jason Azor" class="hero-photo" /> -->
+    </div>
+    <div class="hero-bg-effects">
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      <div class="floating-orb orb-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-photo-wrapper">
+          <!-- EDIT: Replace with your actual photo -->
+          <div class="about-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Add Your Photo</span>
+          </div>
+          <!-- <img src="your-photo.jpg" alt="Jason Azor" class="about-photo" /> -->
+        </div>
+        <div class="about-text">
+          <p class="about-intro">
+            I'm <strong>Jason Gabriel M. Azor</strong>, a student and aspiring
+            <strong>Full-Stack Developer</strong> and <strong>Data Engineer</strong>.
+            I'm passionate about building modern web applications and working with data
+            to create meaningful solutions.
+          </p>
+          <p>
+            <!-- EDIT: Add more about yourself here -->
+            With a solid foundation across both frontend and backend technologies,
+            I enjoy turning ideas into real, functional products. I'm always eager
+            to learn new technologies and take on challenging projects.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat-item">
+              <!-- EDIT: Update project count -->
+              <span class="stat-number">--</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <!-- EDIT: Update year -->
+              <span class="stat-number">--</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS SECTION ===== -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Technologies</h2>
+      <div class="skills-categories">
+
+        <div class="skill-category">
+          <h3 class="category-title">Frontend</h3>
+          <div class="skill-cards">
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #e34f26;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.071-.999.098-1.181H7.27l.3 3.432h7.077l-.263 3.015-2.406.651-2.38-.649-.147-1.782H7.495l.283 3.514L12 15.092l4.16-1.164.558-6.178H8.531z"/></svg>
+              </div>
+              <span>HTML5</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #1572b6;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.726-13.469z"/></svg>
+              </div>
+              <span>CSS3</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #f7df1e;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+              </div>
+              <span>JavaScript</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #000000;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.253 1.621.421 2.465.49.28.023 1.156.023 1.436 0 1.236-.098 2.281-.392 3.36-.942.162-.082.193-.105.174-.133a291.23 291.23 0 0 0-1.606-2.154l-1.578-2.09-.198-.294a72.49 72.49 0 0 0-1.977-2.83l-.01-.007c-.011 0-.023 1.065-.032 2.367a19.96 19.96 0 0 1-.067 2.449l-.023.027-.014.012-.025.013-.04.019-.07.03c-.23.088-.409.048-.558-.123a.81.81 0 0 1-.073-.137l-.016-.043v-9.452l.026-.058a.67.67 0 0 1 .157-.2c.114-.092.208-.126.377-.126.218 0 .335.064.468.254a82.135 82.135 0 0 1 2.007 2.99l8.074 12.067c.094-.062.18-.13.27-.195a11.94 11.94 0 0 0 4.876-7.503c.096-.659.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.86-8.292-8.209-9.695a12.494 12.494 0 0 0-2.433-.486c-.139-.012-1.098-.023-1.262-.013z"/></svg>
+              </div>
+              <span>Next.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="category-title">Backend</h3>
+          <div class="skill-cards">
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #339933;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 0 0 .272 0l8.795-5.076a.277.277 0 0 0 .134-.238V6.921a.283.283 0 0 0-.137-.242l-8.791-5.072a.278.278 0 0 0-.271 0L3.075 6.68a.284.284 0 0 0-.139.241v10.15a.27.27 0 0 0 .138.236l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675a1.857 1.857 0 0 1-.922-1.604V6.921c0-.659.353-1.275.922-1.603L11.075.242a1.93 1.93 0 0 1 1.848 0l8.794 5.076c.57.329.924.944.924 1.603v10.15a1.86 1.86 0 0 1-.924 1.604l-8.794 5.078c-.28.163-.6.247-.925.247z"/></svg>
+              </div>
+              <span>Node.js</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #777bb4;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.576.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.42.997c-.2.3-.46.551-.747.753zm4.805-2.686l-.49 2.51c-.073.378-.035.641.111.788.148.148.456.222.924.222h.479l-.266 1.362h-1.164c-.718 0-1.228-.154-1.53-.462-.303-.308-.376-.78-.22-1.415l.54-2.77H11.19l.258-1.322h.736l.305-1.569h1.378l-.305 1.569h1.138l-.258 1.322h-1.137l-.008-.235zm5.505 2.686c-.26.25-.575.438-.917.551-.335.108-.765.164-1.285.164h-1.18l-.327 1.681h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.42.997c-.2.3-.46.551-.747.753h.001zm-.84-1.753c.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29h-.944l-.515 2.648h.838c.557 0 .97-.105 1.242-.314s.455-.559.55-1.049z"/></svg>
+              </div>
+              <span>PHP</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #3776ab;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z"/><path d="M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.89.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l.23-.33.08-.41-.08-.42-.23-.33-.33-.23-.41-.08-.41.08-.33.23-.23.33-.08.42.08.41.23.33.33.23.41.08.41-.08.33-.23z"/></svg>
+              </div>
+              <span>Python</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #007396;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.762.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.929 4.562 0-.001.07-.062.091-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.889 4.832 0 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.189-7.627"/></svg>
+              </div>
+              <span>Java</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="category-title">Database</h3>
+          <div class="skill-cards">
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #f80000;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.412 9.515c.376-.276.805-.472 1.236-.628.43-.156.89-.245 1.34-.245.18 0 .37.02.55.07.18.05.34.13.47.26.13.13.24.3.31.52.07.22.1.5.1.85 0 .35-.04.73-.11 1.14-.07.41-.18.81-.31 1.19-.13.38-.28.74-.44 1.07-.16.33-.32.61-.49.83-.16.22-.32.39-.47.5-.15.11-.27.17-.36.17-.06 0-.14-.03-.24-.08-.1-.05-.2-.13-.31-.24-.11-.11-.22-.25-.33-.42-.11-.17-.21-.38-.3-.63-.09-.25-.16-.53-.21-.86-.05-.33-.08-.7-.08-1.12 0-.47.05-.93.14-1.37.09-.44.24-.83.44-1.17zm4.33-5.89c-.96-.26-1.99-.32-3-.26-1.01.06-1.99.28-2.9.65-.91.37-1.73.89-2.4 1.56C2.78 6.24 2.28 7.04 2 7.98c-.14.47-.21.97-.21 1.47 0 .5.07.99.23 1.46.16.47.41.9.74 1.27.33.37.74.67 1.24.87.5.2 1.1.3 1.79.3l-.05.23c-.08.38-.19.78-.33 1.22-.14.44-.31.87-.52 1.3-.21.43-.46.83-.75 1.2-.29.37-.62.68-1 .93-.38.25-.8.38-1.28.38-.31 0-.58-.06-.81-.18-.23-.12-.42-.27-.57-.45-.15-.18-.27-.38-.35-.6-.08-.22-.12-.43-.12-.63 0-.14.01-.29.04-.44l-1.6.06c-.04.2-.06.42-.06.66 0 .41.08.81.24 1.19.16.38.4.72.71 1.01.31.29.69.52 1.14.69.45.17.96.25 1.53.25.84 0 1.59-.18 2.23-.53.64-.35 1.2-.82 1.67-1.4.47-.58.87-1.23 1.2-1.96.33-.73.59-1.49.78-2.27.19-.78.32-1.55.39-2.31.07-.76.07-1.47 0-2.12l.69-.1c.24-.04.47-.1.69-.19.22-.09.41-.21.57-.37.16-.16.24-.37.24-.63 0-.15-.04-.3-.11-.44-.07-.14-.17-.26-.3-.36-.13-.1-.28-.18-.45-.24-.17-.06-.35-.09-.55-.09-.26 0-.5.05-.71.14l-.25.11c-.02-.28-.07-.56-.15-.83-.08-.27-.19-.51-.33-.72-.14-.21-.31-.38-.52-.5-.21-.12-.46-.18-.76-.18-.43 0-.85.11-1.25.32-.4.21-.78.49-1.14.82z"/></svg>
+              </div>
+              <span>Oracle SQL</span>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon" style="--skill-color: #4479a1;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 0 0-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 0 0-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095c.242 2.015.384 3.86.428 5.53zm4.017-4.08c-.378 2.045-.876 3.533-1.492 4.468-.375.53-.788.796-1.243.796-.145 0-.32-.04-.527-.118v-.588c.1.016.21.04.327.04.352 0 .628-.142.828-.424.223-.312.378-.704.46-1.17a15.917 15.917 0 0 0-.652-3.004H8.89l.512 2.127c.12.513.197.928.226 1.247h.014c.06-.384.177-.934.352-1.65l.45-1.724h.666zM21.56 12.843l-.926.06c-.116-.48-.252-.85-.408-1.107-.258-.345-.62-.517-1.088-.517-.378 0-.71.14-.988.427-.34.34-.572.793-.696 1.357-.124.564-.187 1.16-.187 1.788 0 .653.07 1.162.208 1.53.182.48.506.72.974.72.4 0 .71-.145.926-.433.215-.288.378-.717.49-1.29l.927.06c-.184.852-.476 1.487-.876 1.91-.4.42-.945.63-1.634.63-.714 0-1.263-.265-1.65-.793-.387-.53-.58-1.323-.58-2.38 0-1.12.207-1.974.62-2.56.416-.583.982-.874 1.7-.874.586 0 1.06.19 1.416.56.357.374.622.936.796 1.69zm1.436 5.852h-.72V13.26h.72v2.25c.24-.35.57-.524.99-.524.33 0 .59.1.777.3.187.2.28.505.28.914v2.496h-.72v-2.34c0-.28-.05-.477-.15-.59-.1-.113-.256-.17-.467-.17-.206 0-.38.07-.52.21-.14.14-.21.34-.21.6v2.29h.02zm-8.09 0h-.72v-3.486h.72v.54c.12-.22.26-.383.42-.487.16-.104.35-.156.57-.156.088 0 .176.01.264.03l-.04.69c-.076-.025-.16-.037-.252-.037-.25 0-.44.1-.576.297-.136.198-.204.502-.204.912v1.697h-.18z"/></svg>
+              </div>
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDIT: Add more skill categories here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Here are some things I've built. More coming soon!</p>
+      <div class="projects-grid">
+
+        <!-- PROJECT CARD 1 (Template) -->
+        <article class="project-card">
+          <div class="project-image">
+            <!-- EDIT: Replace with project screenshot -->
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Project Screenshot</span>
+            </div>
+            <!-- <img src="project1.jpg" alt="Project Name" /> -->
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Brief description of the project. What it does, what problem it solves, etc.</p>
+            <div class="project-tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <!-- EDIT: Add your project links -->
+              <a href="#" class="btn btn-small btn-primary">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 2 (Template) -->
+        <article class="project-card">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Project Screenshot</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Brief description of the project. What it does, what problem it solves, etc.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-primary">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT CARD 3 (Template) -->
+        <article class="project-card">
+          <div class="project-image">
+            <div class="project-image-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Project Screenshot</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Project Title</h3>
+            <p class="project-desc">Brief description of the project. What it does, what problem it solves, etc.</p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Oracle SQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-primary">Live Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- EDIT: Copy a project-card block above to add more projects -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Have a question or want to work together? Drop me a message!</p>
+      <div class="contact-grid">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        </form>
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <!-- EDIT: Add your email -->
+              <p>your.email@example.com</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <h4>GitHub</h4>
+              <a href="https://github.com/gbzor" target="_blank" rel="noopener">github.com/gbzor</a>
+            </div>
+          </div>
+          <!-- EDIT: Add more contact links (LinkedIn, Twitter, etc.) -->
+          <!--
+          <div class="contact-card">
+            <div class="contact-icon">...</div>
+            <div>
+              <h4>LinkedIn</h4>
+              <a href="#">linkedin.com/in/yourprofile</a>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Jason Gabriel M. Azor. All rights reserved.</p>
+      <!-- EDIT: Add social links, etc. -->
+    </div>
+  </footer>
+
+  <!-- ===== THEME TOGGLE (Bottom Right) ===== -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,231 +1,56 @@
-/* ===== TYPEWRITER EFFECT ===== */
-const typewriterEl = document.getElementById('typewriter');
-const roles = [
-  'Student',
-  'Aspiring Full-Stack Developer',
-  'Data Engineer',
-  'Problem Solver'
-  // EDIT: Add more roles here
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const TYPING_SPEED = 70;
-const DELETING_SPEED = 40;
-const PAUSE_AFTER_TYPING = 2000;
-const PAUSE_AFTER_DELETING = 500;
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-function typewrite() {
-  if (prefersReducedMotion.matches) {
-    typewriterEl.textContent = roles[roleIndex];
-    return;
-  }
-
-  const currentRole = roles[roleIndex];
-
-  if (!isDeleting) {
-    typewriterEl.textContent = currentRole.slice(0, charIndex + 1);
-    charIndex++;
-
-    if (charIndex === currentRole.length) {
-      isDeleting = true;
-      setTimeout(typewrite, PAUSE_AFTER_TYPING);
-      return;
-    }
-    setTimeout(typewrite, TYPING_SPEED);
-  } else {
-    typewriterEl.textContent = currentRole.slice(0, charIndex - 1);
-    charIndex--;
-
-    if (charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      setTimeout(typewrite, PAUSE_AFTER_DELETING);
-      return;
-    }
-    setTimeout(typewrite, DELETING_SPEED);
-  }
-}
-
-typewrite();
-
 /* ===== THEME TOGGLE ===== */
-const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
 
-function getDefaultTheme() {
+function preferredTheme() {
   const saved = localStorage.getItem('theme');
   if (saved) return saved;
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-html.setAttribute('data-theme', getDefaultTheme());
-
-function updateMetaThemeColor(theme) {
-  const color = theme === 'dark' ? '#0a0a0f' : '#f8f8fc';
-  document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
-    meta.setAttribute('content', color);
+function applyTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  const meta = theme === 'dark' ? '#15140f' : '#f5f2ec';
+  document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+    m.setAttribute('content', meta);
   });
 }
 
-updateMetaThemeColor(getDefaultTheme());
+applyTheme(preferredTheme());
 
-themeToggle.addEventListener('click', function() {
-  const current = html.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  html.setAttribute('data-theme', next);
+themeToggle.addEventListener('click', function () {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
   localStorage.setItem('theme', next);
-  updateMetaThemeColor(next);
 });
 
-/* ===== THROTTLE UTILITY ===== */
-function throttle(fn, ms) {
-  let lastCall = 0;
-  let timer = null;
-  return function() {
-    var now = Date.now();
-    var remaining = ms - (now - lastCall);
-    if (remaining <= 0) {
-      if (timer) { clearTimeout(timer); timer = null; }
-      lastCall = now;
-      fn();
-    } else if (!timer) {
-      timer = setTimeout(function() {
-        lastCall = Date.now();
-        timer = null;
-        fn();
-      }, remaining);
-    }
-  };
+/* ===== NAV BORDER ON SCROLL ===== */
+const nav = document.getElementById('nav');
+
+function onScroll() {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
 }
 
-/* ===== DOCK ACTIVE STATE ===== */
-var dockItems = document.querySelectorAll('.dock-item[href^="#"]');
-var sections = document.querySelectorAll('section[id]');
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
 
-function updateActiveDock() {
-  var scrollY = window.scrollY + window.innerHeight / 2;
+/* ===== REVEAL ON SCROLL ===== */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealTargets = document.querySelectorAll('.section, .hero');
 
-  sections.forEach(function(section) {
-    var top = section.offsetTop;
-    var height = section.offsetHeight;
-    var id = section.getAttribute('id');
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
+} else {
+  revealTargets.forEach(function (el) { el.classList.add('reveal'); });
 
-    if (scrollY >= top && scrollY < top + height) {
-      dockItems.forEach(function(item) { item.classList.remove('active'); });
-      var activeItem = document.querySelector('.dock-item[href="#' + id + '"]');
-      if (activeItem) activeItem.classList.add('active');
-    }
-  });
-}
-
-window.addEventListener('scroll', throttle(updateActiveDock, 100), { passive: true });
-
-/* ===== SMOOTH SCROLL FOR DOCK LINKS ===== */
-dockItems.forEach(function(item) {
-  item.addEventListener('click', function(e) {
-    e.preventDefault();
-    var target = document.querySelector(item.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-/* ===== SCROLL TO TOP BUTTON ===== */
-var scrollTopBtn = document.getElementById('scrollTop');
-
-var handleScrollVisibility = throttle(function() {
-  if (window.scrollY > 500) {
-    scrollTopBtn.classList.add('visible');
-  } else {
-    scrollTopBtn.classList.remove('visible');
-  }
-}, 100);
-
-window.addEventListener('scroll', handleScrollVisibility, { passive: true });
-
-scrollTopBtn.addEventListener('click', function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* ===== SECTION REVEAL ON SCROLL ===== */
-var observerOptions = {
-  threshold: 0.05,
-  rootMargin: '0px 0px -30px 0px'
-};
-
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.section').forEach(function(section) {
-  observer.observe(section);
-});
-
-/* ===== CONTACT FORM (placeholder handler) ===== */
-var contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // EDIT: Replace this with your actual form submission logic
-  // Options: Formspree, EmailJS, Netlify Forms, custom backend, etc.
-  var formData = new FormData(contactForm);
-  var data = Object.fromEntries(formData);
-  console.log('Form submitted:', data);
-
-  alert('Thanks for your message! (Connect a form service to make this work)');
-  contactForm.reset();
-});
-
-/* ===== DOCK MAGNIFICATION EFFECT (pointer devices only) ===== */
-var dockContainer = document.querySelector('.dock-container');
-var isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-
-if (!isTouchDevice) {
-  dockContainer.addEventListener('mousemove', function(e) {
-    var items = dockContainer.querySelectorAll('.dock-item');
-    var rect = dockContainer.getBoundingClientRect();
-    var mouseX = e.clientX - rect.left;
-
-    items.forEach(function(item) {
-      var itemRect = item.getBoundingClientRect();
-      var itemCenter = itemRect.left + itemRect.width / 2 - rect.left;
-      var distance = Math.abs(mouseX - itemCenter);
-      var maxDistance = 120;
-
-      if (distance < maxDistance) {
-        var scale = 1 + 0.15 * (1 - distance / maxDistance);
-        var lift = -4 * (1 - distance / maxDistance);
-        item.style.transform = 'translateY(' + lift + 'px) scale(' + scale + ')';
-      } else {
-        item.style.transform = '';
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       }
     });
-  });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  dockContainer.addEventListener('mouseleave', function() {
-    var items = dockContainer.querySelectorAll('.dock-item');
-    items.forEach(function(item) {
-      item.style.transform = '';
-    });
-  });
+  revealTargets.forEach(function (el) { observer.observe(el); });
 }
-
-/* ===== HANDLE ORIENTATION CHANGE / RESIZE ===== */
-var resizeTimeout;
-window.addEventListener('resize', function() {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(function() {
-    updateActiveDock();
-  }, 250);
-}, { passive: true });

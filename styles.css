@@ -410,9 +410,26 @@ a { color: inherit; text-decoration: none; }
 .stack-list { list-style: none; }
 
 .stack-list li {
-  padding: 7px 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 0;
   font-size: 0.98rem;
   color: var(--ink-soft);
+  transition: color 0.2s var(--ease);
+}
+
+.stack-ico {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--ink-faint);
+  transition: color 0.2s var(--ease);
+}
+
+@media (hover: hover) {
+  .stack-list li:hover { color: var(--ink); }
+  .stack-list li:hover .stack-ico { color: var(--accent); }
 }
 
 /* ===== CONTACT ===== */

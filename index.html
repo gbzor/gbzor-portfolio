@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#f8f8fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f0e8" media="(prefers-color-scheme: light)" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>gbzor | Jason Gabriel M. Azor</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ===== DOCK NAVBAR (macOS-inspired) ===== -->
+  <!-- ===== DOCK NAVBAR ===== -->
   <nav class="dock" id="dock">
     <div class="dock-container">
       <a href="#hero" class="dock-item active" data-tooltip="Home">
@@ -61,10 +61,9 @@
   <!-- ===== HERO SECTION ===== -->
   <section id="hero" class="hero">
     <div class="hero-content">
-      <div class="hero-greeting">
-        <span class="greeting-line"></span>
-        <span class="greeting-text">Hello, I'm</span>
-        <span class="greeting-line"></span>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Available for opportunities</span>
       </div>
       <h1 class="hero-name">
         <span class="name-first">Jason Gabriel</span>
@@ -72,7 +71,7 @@
       </h1>
       <p class="hero-tagline">
         <span class="tagline-role" id="typewriter"></span>
-        <span class="typewriter-cursor">|</span>
+        <span class="typewriter-cursor">_</span>
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -83,15 +82,16 @@
       <!-- <img src="your-photo.jpg" alt="Jason Azor" class="hero-photo" /> -->
     </div>
     <div class="hero-bg-effects">
-      <div class="floating-orb orb-1"></div>
-      <div class="floating-orb orb-2"></div>
-      <div class="floating-orb orb-3"></div>
+      <div class="grain-overlay"></div>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
     </div>
   </section>
 
   <!-- ===== ABOUT SECTION ===== -->
   <section id="about" class="section about">
     <div class="container">
+      <div class="section-label">01 / About</div>
       <h2 class="section-title">About Me</h2>
       <div class="about-grid">
         <div class="about-photo-wrapper">
@@ -139,6 +139,7 @@
   <!-- ===== SKILLS SECTION ===== -->
   <section id="skills" class="section skills">
     <div class="container">
+      <div class="section-label">02 / Skills</div>
       <h2 class="section-title">Skills & Technologies</h2>
       <div class="skills-categories">
 
@@ -228,19 +229,17 @@
   <!-- ===== PROJECTS SECTION ===== -->
   <section id="projects" class="section projects">
     <div class="container">
+      <div class="section-label">03 / Projects</div>
       <h2 class="section-title">Projects</h2>
       <p class="section-subtitle">Here are some things I've built. More coming soon!</p>
       <div class="projects-grid">
 
-        <!-- PROJECT CARD 1 (Template) -->
         <article class="project-card">
           <div class="project-image">
-            <!-- EDIT: Replace with project screenshot -->
             <div class="project-image-placeholder">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
               <span>Project Screenshot</span>
             </div>
-            <!-- <img src="project1.jpg" alt="Project Name" /> -->
           </div>
           <div class="project-info">
             <h3 class="project-title">Project Title</h3>
@@ -251,14 +250,12 @@
               <span class="tag">JavaScript</span>
             </div>
             <div class="project-links">
-              <!-- EDIT: Add your project links -->
               <a href="#" class="btn btn-small btn-primary">Live Demo</a>
               <a href="#" class="btn btn-small btn-outline">Source Code</a>
             </div>
           </div>
         </article>
 
-        <!-- PROJECT CARD 2 (Template) -->
         <article class="project-card">
           <div class="project-image">
             <div class="project-image-placeholder">
@@ -280,7 +277,6 @@
           </div>
         </article>
 
-        <!-- PROJECT CARD 3 (Template) -->
         <article class="project-card">
           <div class="project-image">
             <div class="project-image-placeholder">
@@ -303,8 +299,6 @@
           </div>
         </article>
 
-        <!-- EDIT: Copy a project-card block above to add more projects -->
-
       </div>
     </div>
   </section>
@@ -312,6 +306,7 @@
   <!-- ===== CONTACT SECTION ===== -->
   <section id="contact" class="section contact">
     <div class="container">
+      <div class="section-label">04 / Contact</div>
       <h2 class="section-title">Get In Touch</h2>
       <p class="section-subtitle">Have a question or want to work together? Drop me a message!</p>
       <div class="contact-grid">
@@ -350,16 +345,6 @@
               <a href="https://github.com/gbzor" target="_blank" rel="noopener">github.com/gbzor</a>
             </div>
           </div>
-          <!-- EDIT: Add more contact links (LinkedIn, Twitter, etc.) -->
-          <!--
-          <div class="contact-card">
-            <div class="contact-icon">...</div>
-            <div>
-              <h4>LinkedIn</h4>
-              <a href="#">linkedin.com/in/yourprofile</a>
-            </div>
-          </div>
-          -->
         </div>
       </div>
     </div>
@@ -369,7 +354,6 @@
   <footer class="footer">
     <div class="container">
       <p>&copy; 2026 Jason Gabriel M. Azor. All rights reserved.</p>
-      <!-- EDIT: Add social links, etc. -->
     </div>
   </footer>
 
@@ -379,7 +363,6 @@
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
 
-  <!-- ===== SCROLL TO TOP ===== -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>

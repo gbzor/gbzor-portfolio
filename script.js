@@ -122,13 +122,13 @@ if (heroCode) {
       if (charIndex <= text.length) {
         currentLine.textContent = text.slice(0, charIndex) || BLANK;
         charIndex++;
-        setTimeout(step, text ? 26 + Math.random() * 46 : 0);
+        setTimeout(step, text ? 42 + Math.random() * 60 : 0);
       } else {
         currentLine.textContent = text || BLANK;
         currentLine = null;
         charIndex = 0;
         lineIndex++;
-        setTimeout(step, 240 + Math.random() * 260);
+        setTimeout(step, 460 + Math.random() * 380);
       }
     }
 

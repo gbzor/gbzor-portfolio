@@ -54,3 +54,84 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
 
   revealTargets.forEach(function (el) { observer.observe(el); });
 }
+
+/* ===== HERO BACKGROUND CODE TYPING (hero only) ===== */
+const heroCode = document.querySelector('.hero-code');
+
+if (heroCode) {
+  const snippet = [
+    'const dev = {',
+    "  name: 'Gabriel Azor',",
+    "  role: 'full-stack + data',",
+    "  base: 'Philippines',",
+    '};',
+    '',
+    'async function build(idea) {',
+    '  const raw = await collect(idea);',
+    '  const clean = transform(raw);',
+    '  return ship(render(clean));',
+    '}',
+    '',
+    'function transform(rows) {',
+    '  return rows',
+    '    .filter(row => row.valid)',
+    '    .map(normalize);',
+    '}',
+    '',
+    '// turn data into things people use',
+    "build({ from: 'an idea' })",
+    '  .then(launch)',
+    '  .catch(retry);',
+    ''
+  ];
+
+  const inner = document.createElement('div');
+  inner.className = 'hero-code-inner';
+  heroCode.appendChild(inner);
+
+  const BLANK = '​'; // keep height on empty lines
+
+  if (reduceMotion) {
+    // Static, motion-free backdrop.
+    snippet.forEach(function (text) {
+      const line = document.createElement('div');
+      line.className = 'hero-code-line';
+      line.textContent = text || BLANK;
+      inner.appendChild(line);
+    });
+  } else {
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = null;
+
+    function startLine() {
+      currentLine = document.createElement('div');
+      currentLine.className = 'hero-code-line';
+      currentLine.textContent = BLANK;
+      inner.appendChild(currentLine);
+      // Trim the oldest lines once the column overflows — endless scroll.
+      while (inner.offsetHeight > heroCode.clientHeight && inner.children.length > 1) {
+        inner.removeChild(inner.firstChild);
+      }
+    }
+
+    function step() {
+      const text = snippet[lineIndex % snippet.length];
+      if (currentLine === null) startLine();
+
+      if (charIndex <= text.length) {
+        currentLine.textContent = text.slice(0, charIndex) || BLANK;
+        charIndex++;
+        setTimeout(step, text ? 26 + Math.random() * 46 : 0);
+      } else {
+        currentLine.textContent = text || BLANK;
+        currentLine = null;
+        charIndex = 0;
+        lineIndex++;
+        setTimeout(step, 240 + Math.random() * 260);
+      }
+    }
+
+    step();
+  }
+}

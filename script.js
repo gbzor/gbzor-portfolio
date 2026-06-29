@@ -1,7 +1,7 @@
-/* ===== VIEW ROUTING (Home / Projects / Contact) ===== */
+/* ===== VIEW ROUTING (Home / Projects / Tools / Contact) ===== */
 const navItems = document.querySelectorAll('.nav-item');
 const views = document.querySelectorAll('.view');
-const validViews = ['home', 'projects', 'contact'];
+const validViews = ['home', 'projects', 'tools', 'contact'];
 
 function showView(name) {
   const view = validViews.includes(name) ? name : 'home';

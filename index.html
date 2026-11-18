@@ -3,162 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f1f1ee" />
+  <meta name="theme-color" content="#f2f1ec" />
   <meta name="description" content="Gabriel Azor — Information Technology student, full-stack developer." />
   <title>Gabriel Azor</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="layout">
+  <!-- ===== RAIL ===== -->
+  <aside class="rail">
+    <a href="#home" class="rail-mark" aria-label="Gabriel Azor, home">GA</a>
 
-    <!-- ===== LEFT SIDEBAR ===== -->
-    <aside class="sidebar">
-      <div class="sidebar-head">
-        <span class="brand">Gabriel Azor</span>
-        <span class="brand-sub">it student, naga &mdash; building on the web</span>
+    <nav class="rail-nav" aria-label="Primary">
+      <a href="#home" data-view="home" class="nav-item">home</a>
+      <a href="#projects" data-view="projects" class="nav-item">projects</a>
+      <a href="#tools" data-view="tools" class="nav-item">tools</a>
+      <a href="#contact" data-view="contact" class="nav-item">contact</a>
+    </nav>
+
+    <span class="rail-status" title="Available for work"><span class="sr-only">Available for work</span></span>
+  </aside>
+
+  <main class="main">
+
+    <!-- ===== HOME ===== -->
+    <section class="view view-home" data-view="home">
+      <p class="kicker">it student &middot; ateneo de naga &middot; philippines</p>
+
+      <div class="hero">
+        <h1 class="giant">Gabriel<br /><em>Azor</em></h1>
+
+        <!-- Photo lives in me.jpg; replace that file to update it. -->
+        <figure class="id-card">
+          <img src="me.jpg" alt="Gabriel Azor" width="600" height="600" />
+          <figcaption>
+            <span>gabriel azor</span>
+            <span>id 001</span>
+          </figcaption>
+        </figure>
       </div>
 
-      <nav class="side-nav" aria-label="Primary">
-        <a href="#home" data-view="home" class="nav-item"><span class="nav-num">01</span>home</a>
-        <a href="#projects" data-view="projects" class="nav-item"><span class="nav-num">02</span>projects</a>
-        <a href="#tools" data-view="tools" class="nav-item"><span class="nav-num">03</span>tools</a>
-        <a href="#contact" data-view="contact" class="nav-item"><span class="nav-num">04</span>contact</a>
-      </nav>
+      <p class="blurb">
+        I build web applications and turn data into things people can
+        <em>actually</em> use.
+      </p>
+    </section>
 
-      <div class="sidebar-foot">
-        <span class="status">available for work</span>
-      </div>
-    </aside>
+    <!-- ===== PROJECTS ===== -->
+    <section class="view" data-view="projects" hidden>
+      <p class="kicker">selected projects</p>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="content">
+      <ol class="proj-list">
+        <li>
+          <a class="proj" href="https://tama-ba.vercel.app/" target="_blank" rel="noopener">
+            <span class="proj-num">01</span>
+            <span class="proj-title">Tama Ba?</span>
+            <span class="proj-desc">Helps young Filipinos spot disinformation.</span>
+            <span class="proj-arrow" aria-hidden="true">&nearr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="proj" href="https://soft-rolypoly-1c5197.netlify.app/" target="_blank" rel="noopener">
+            <span class="proj-num">02</span>
+            <span class="proj-title">Bloom</span>
+            <span class="proj-desc">Offline-first PCOS pill &amp; symptom tracker.</span>
+            <span class="proj-arrow" aria-hidden="true">&nearr;</span>
+          </a>
+        </li>
+      </ol>
+    </section>
 
-      <!-- HOME -->
-      <section class="view" id="view-home" data-view="home">
-        <div class="home">
-          <!-- PHOTO FRAME — your photo lives in me.jpg; swap that file (or
-               change the src below) to update it. -->
-          <figure class="photo-frame">
-            <img class="photo-img" src="me.jpg" alt="Gabriel Azor" />
-            <figcaption class="photo-ph">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L5 21"/></svg>
-              <span>Your photo here</span>
-            </figcaption>
-          </figure>
+    <!-- ===== TOOLS ===== -->
+    <section class="view" data-view="tools" hidden>
+      <p class="kicker">tools i use</p>
 
-          <div class="intro">
-            <p class="eyebrow">about</p>
-            <h1 class="intro-title">Hi, I&rsquo;m Gabriel.</h1>
-            <p class="intro-text">
-              I&rsquo;m an Information Technology student at Ateneo de Naga
-              University. I build web applications and turn data into things
-              people can <em>actually</em> use.
-            </p>
-            <p class="intro-meta">full-stack &amp; data &mdash; philippines</p>
-          </div>
+      <div class="tickers">
+        <div class="ticker" data-label="languages">
+          <ul>
+            <li>JavaScript</li><li>TypeScript</li><li>Python</li><li>Java</li><li>PHP</li><li>SQL</li>
+          </ul>
         </div>
-      </section>
+        <div class="ticker reverse" data-label="frameworks &amp; tools">
+          <ul>
+            <li>Next.js</li><li>React</li><li>Node.js</li><li>Docker</li><li>Git</li>
+          </ul>
+        </div>
+        <div class="ticker" data-label="deployment">
+          <ul>
+            <li>GitHub</li><li>Vercel</li><li>Netlify</li><li>ngrok</li>
+          </ul>
+        </div>
+        <div class="ticker reverse" data-label="ai tools">
+          <ul>
+            <li>Claude</li><li>Gemini</li><li>Codex</li><li>Cursor</li><li>GitHub Copilot</li><li>Antigravity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <!-- PROJECTS -->
-      <section class="view" id="view-projects" data-view="projects" hidden>
-        <p class="eyebrow">projects</p>
-        <ol class="proj-list">
-          <li class="proj">
-            <a href="https://tama-ba.vercel.app/" target="_blank" rel="noopener" class="proj-link">
-              <span class="proj-num">01</span>
-              <span class="proj-body">
-                <h2 class="proj-title">Tama Ba?</h2>
-                <p class="proj-desc">A platform that helps young Filipinos spot disinformation.</p>
-              </span>
-              <span class="proj-cue">view&nbsp;&rarr;</span>
-            </a>
-          </li>
-          <li class="proj">
-            <a href="https://soft-rolypoly-1c5197.netlify.app/" target="_blank" rel="noopener" class="proj-link">
-              <span class="proj-num">02</span>
-              <span class="proj-body">
-                <h2 class="proj-title">Bloom</h2>
-                <p class="proj-desc">An offline-first PCOS pill &amp; symptom tracker.</p>
-              </span>
-              <span class="proj-cue">view&nbsp;&rarr;</span>
-            </a>
-          </li>
-        </ol>
-      </section>
+    <!-- ===== CONTACT ===== -->
+    <section class="view view-contact" data-view="contact" hidden>
+      <p class="kicker">say hello</p>
 
-      <!-- TOOLS -->
-      <section class="view" id="view-tools" data-view="tools" hidden>
-        <p class="eyebrow">tools</p>
-        <dl class="tools">
-          <div class="tool-group">
-            <dt class="tool-cat">languages</dt>
-            <dd>
-              <ul class="tool-tags">
-                <li>JavaScript</li>
-                <li>TypeScript</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>PHP</li>
-                <li>SQL</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="tool-group">
-            <dt class="tool-cat">frameworks &amp; tools</dt>
-            <dd>
-              <ul class="tool-tags">
-                <li>Next.js</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Docker</li>
-                <li>Git</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="tool-group">
-            <dt class="tool-cat">deployment</dt>
-            <dd>
-              <ul class="tool-tags">
-                <li>GitHub</li>
-                <li>Vercel</li>
-                <li>Netlify</li>
-                <li>ngrok</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="tool-group">
-            <dt class="tool-cat">ai tools</dt>
-            <dd>
-              <ul class="tool-tags">
-                <li>Claude</li>
-                <li>Gemini</li>
-                <li>Codex</li>
-                <li>Cursor</li>
-                <li>GitHub Copilot</li>
-                <li>Antigravity</li>
-              </ul>
-            </dd>
-          </div>
-        </dl>
-      </section>
+      <a class="mega-email" href="mailto:jasonazor16@gmail.com">jasonazor16<wbr />@gmail.com</a>
 
-      <!-- CONTACT -->
-      <section class="view" id="view-contact" data-view="contact" hidden>
-        <p class="eyebrow">contact</p>
-        <h2 class="contact-title">Let&rsquo;s make <em>something</em>.</h2>
-        <a href="mailto:jasonazor16@gmail.com" class="contact-email">jasonazor16@gmail.com</a>
-        <ul class="contact-links">
-          <li><a href="https://github.com/gbzor" target="_blank" rel="noopener">github &rarr;</a></li>
-          <li><a href="https://www.linkedin.com/in/jason-gabriel-azor-63a764149" target="_blank" rel="noopener">linkedin &rarr;</a></li>
-        </ul>
-      </section>
+      <div class="contact-row">
+        <button class="copy-btn" type="button" data-copy="jasonazor16@gmail.com">copy email</button>
+        <a href="https://github.com/gbzor" target="_blank" rel="noopener">github &nearr;</a>
+        <a href="https://www.linkedin.com/in/jason-gabriel-azor-63a764149" target="_blank" rel="noopener">linkedin &nearr;</a>
+      </div>
+    </section>
 
-    </main>
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>

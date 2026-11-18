@@ -218,42 +218,16 @@ em {
   color: var(--accent);
 }
 
-.id-card {
+.portrait {
   position: absolute;
   z-index: 2;
   left: 72%;
   top: 40%;
-  width: clamp(120px, 16vw, 230px);
-  padding: 10px 10px 0;
-  background: var(--paper);
-  box-shadow:
-    0 1px 0 rgba(17, 17, 16, 0.06),
-    0 24px 48px -22px rgba(17, 17, 16, 0.45);
-  transform: rotate(4deg);
-  transition: transform 0.5s var(--ease);
-}
-
-.id-card:hover {
-  transform: rotate(0deg) scale(1.03);
-}
-
-.id-card img {
   display: block;
-  width: 100%;
+  width: clamp(120px, 16vw, 230px);
   height: auto;
   aspect-ratio: 1;
   object-fit: cover;
-}
-
-.id-card figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 9px 2px 11px;
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  white-space: nowrap;
-  color: var(--muted);
 }
 
 /* ===== PROJECTS ===== */
@@ -539,16 +513,10 @@ em {
     font-size: 30vw;
   }
 
-  .id-card {
-    width: 118px;
+  .portrait {
+    width: 112px;
     left: 68%;
     top: 46%;
-    padding: 6px 6px 0;
-  }
-
-  .id-card figcaption {
-    padding: 6px 1px 7px;
-    font-size: 0.5rem;
   }
 
   .proj {

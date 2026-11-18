@@ -218,16 +218,14 @@ em {
   color: var(--accent);
 }
 
+/* Sized in em so it scales with the name: bottom on the baseline, top at
+   the cap height of the "A". */
 .portrait {
-  position: absolute;
-  z-index: 2;
-  left: 72%;
-  top: 40%;
-  display: block;
-  width: clamp(120px, 16vw, 230px);
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
+  display: inline-block;
+  height: 0.7em;
+  width: auto;
+  margin-left: 0.12em;
+  vertical-align: baseline;
 }
 
 /* ===== PROJECTS ===== */
@@ -511,12 +509,6 @@ em {
 
   .giant {
     font-size: 30vw;
-  }
-
-  .portrait {
-    width: 112px;
-    left: 68%;
-    top: 46%;
   }
 
   .proj {
